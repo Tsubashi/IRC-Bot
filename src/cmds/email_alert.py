@@ -1,11 +1,11 @@
 import smtplib
 import string
 import config
+from functions import is_on
 
 def email_alert(components):
-    first_word = components['arguments'].split()[0].strip(string.punctuation)
 
-    if first_word in config.owner and first_word in config.owner_email.keys():
+    if not is_on(config.owner):
         send_alert(components, config.owner_email[first_word])
 
 
@@ -23,7 +23,7 @@ def send_alert(component, to_address):
         server.ehlo()
         server.starttls()
         server.ehlo()
-        server.login(config.from_email_address, config.from_email_password)
+        #server.login(config.from_email_address, config.from_email_password)
     except smtplib.SMTPException as e:
         print e
         server.quit()

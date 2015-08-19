@@ -1,6 +1,16 @@
 IRC Bot
 =======
 A simple IRC Bot written in Python
+Gutted from https://github.com/paulbarbu/IRC-Bot to only include the email
+module with a few modifications, namely to send emails for EVERY IRC message
+IF the owener os NOT logged in. Obviously meant to be used on slow/mostly
+dormant channels.
+
+Despite it's gutting, it is still modular. All of the old commands may be 
+added again if desired.
+
+Usage
+======
 To start it just `cd` to the `src` directory and type `./ircbot.py`, although
 before using the bot it's recommended to check the config first.
 
@@ -9,62 +19,6 @@ _private_ discussion it can be queried (`/query PPyBot`).
 
 IRC Protocol reference: [RFC 1459](http://www.irchelp.org/irchelp/rfc/rfc.html
 "IRC Protocol")
-
-Documentation
-=============
-Sphinx docs to come
-
-Commands
-========
-* `!google <search term>`
-    * returns a link and a short description of the first Google search result
-    * see Dependencies: _!google_
-* `!wiki <search term>`
-    * replies a wikipedia link for \<search term\> along with the first 
-    paragraph from the page
-* `!quit [#channel ]+`
-    * disconnects the bot from the given list of channels
-    * if no arguments are given, all connected channels are disconnected
-    * if some arguments are provided the bot checks the channel names and 
-    disconnects only the valid ones
-    * if no channel is "alive" then the bot closes
-    * Example: `!quit #foo #bar` - quits from #foo and #bar
-    * see Config: _owner_, _channels_
-* `!join <#channel >+`
-    * the bot joins the given channels, minimum one channel name must be supplied
-    * see Config: _owner_
-* `!channels`
-    * replies a list containing the channels the bot is connected to
-    * see Config: _owner_
-* `!help`
-    * list all available commands
-* `!answer`
-    * you'll find the answer through this command
-* `!weather <city>` or `!weather <city>, <state or country>`
-    * replies some info related to the current weather conditions from the
-      given location
-* `!about`
-    * a few words about this software
-* `!mball`
-    * the famous Magic Ball
-* `!uptime`
-    * shows current uptime of the bot
-* `!so <search term>`
-    * replies the first question's title and URL from the search result
-    * see Dependencies: _!so_
-* `!twitter [username]`
-    * replies the latest tweet(along with the tweet date) for the username provided
-    * the date will have the following format: DD/MM/YYYY HH:MM
-    * if no username is provided then the bot will try to get the latest tweet
-      for the IRC-user who issued the command
-
-Total: _13_ commands
-
-Auto-commands
-=============
-* `email_alert` - the bot sends an email to the owner when somebody talks to him
-
-Total: _1_ auto-command
 
 Adding commands
 ===============
@@ -113,19 +67,6 @@ See `src/config.py`:
 * `auto_cmds_list` - a list of commands defined as regular commands with the
   only difference that they cannot be invoked by users, the bot executes them as
   result of an event
-
-Dependencies
-============
-* `!weather`, `!twitter` and `!wiki` module depends on
-  [BeautifulSoup](http://www.crummy.com/software/BeautifulSoup/ "BeautifulSoup")
-    * `!weather` and `!twitter` depends on _BeautifulStoneSoup_ (XML)
-    * `!wiki` depends on _BeautifulSoup_ (HTML)
-* `!google` module depends on 
-[Google Custom Search API](http://code.google.com/p/google-api-python-client/ "Custom Search API")
-    * before using the bot please see the 
-[installation page](http://code.google.com/p/google-api-python-client/wiki/Installation "Custom Search API Installation")
-* `!so` module depends on 
-[StackExchange API](http://stackapps.com/questions/198/py-stackexchange-an-api-wrapper-for-python "Py-StackExchange")
 
 License
 =======

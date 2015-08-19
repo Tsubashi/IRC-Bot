@@ -89,6 +89,19 @@ def is_registered(s, user_nick):
             else:
                 return False
 
+def is_on(s, nick):
+    '''Determines if the nick is online
+    Returns true if nick is online, else False
+    '''
+    s.send('ISON ' + nick + '\r\n')
+
+    while True:
+        receive = s.recv(4096)
+
+        if ('Users online: ' + nick) in receive: # user is online
+            return True
+        else:
+            return False
 
 def get_nick(nicks):
     for nick in nicks:

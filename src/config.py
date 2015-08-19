@@ -5,13 +5,11 @@ import logging
 
 # some commands can be executed only if the user's nick is found in this list
 owner = list(set([
-    'paullik',
-    'foobarfoo',
-    'paullik-test',
+    'cscott'
 ]))
 
 owner_email = {
-    'foobarfoo': 'foobar@gmail.com',
+    'cscott': 'cscott@example.com',
 }
 
 # server to connect to
@@ -20,9 +18,9 @@ server = 'chat.freenode.net'
 port = 6667
 
 # bot's nicknames
-nicks = list(set(['PPyBot']))
+nicks = list(set(['CScottBot']))
 # bot's real name
-real_name = 'Paul Python Bot'
+real_name = 'CScott Bot'
 
 # channels to join on startup
 channels = list(set([
@@ -34,24 +32,10 @@ cmds = {
     # core commands list, these commands will be run in the same thread as the bot
     # and will have acces to the socket that the bot uses
     'core': list(set([
-        'quit',
-        'join',
-        'channels',
     ])),
 
     # normal commands list, the ones that are accessible to any user
     'user': list(set([
-        'task',
-        'wiki',
-        'answer',
-        'about',
-        'help',
-        'weather',
-        'google',
-        'mball',
-        'uptime',
-        'so',
-        'twitter',
     ])),
 
     # commands list that the bot will execute even if a human didn't request an
