@@ -70,6 +70,17 @@ def run(socket, channels, cmds, nick):
                                     callable_cmd.__name__)
 
                                     logging.error(str(e))
+                    # run auto-core commands
+                    for cmd in config.cmds['auto-core']:
+                        callable_cmd = get_cmd(cmd, cmds['auto-core'])
+                        if callable_cmd:
+                            try:
+                                response = callable_cmd(socket, components)
+                            except Exception as e:
+                                response = err.C_EXCEPTION.format(
+                                callable_cmd.__name__)
+
+                                logging.error(str(e))
 
                     # run auto commands
                     for cmd in config.cmds['auto']:
