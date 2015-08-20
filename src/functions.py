@@ -98,7 +98,7 @@ def is_on(s, nick):
     while True:
         receive = s.recv(4096)
 
-        if ('Users online: ' + nick) in receive: # user is online
+        if (nick) in receive: # user is online
             return True
         else:
             return False
