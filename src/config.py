@@ -4,28 +4,23 @@ import time
 import logging
 
 # some commands can be executed only if the user's nick is found in this list
-owner = list(set([
-    'cscott'
-]))
+owner = 'Tsu'
 
-owner_email = {
-    'cscott': 'cscott@example.com',
-}
+owner_email = "Tsu@example.com"
 
 # server to connect to
-server = 'chat.freenode.net'
+server = 'irc.example.com'
 # server's port
 port = 6667
 
 # bot's nicknames
-nicks = list(set(['CScottBot']))
+nicks = list(set(['TsuBot']))
 # bot's real name
-real_name = 'CScott Bot'
+real_name = 'Tsu Bot'
 
 # channels to join on startup
 channels = list(set([
-    '#ppybbot',
-    '#test-chan',
+    '#Tsu'
 ]))
 
 cmds = {
@@ -41,15 +36,19 @@ cmds = {
     # commands list that the bot will execute even if a human didn't request an
     # action
     'auto': list(set([
+    ])),
+
+    # commands list that the bot will execute even if a human didn't request an
+    # action and will have acces to the socket that the bot uses
+    'auto-core': list(set([
         'email_alert',
     ])),
 }
 
 # smtp server for email_alert
-smtp_server = 'smtp.gmail.com'
+smtp_server = 'localhost'
 smtp_port = 25
-from_email_address = 'changeme@gmail.com'
-from_email_password = 'p@s$w0rd'
+from_email_address = 'irc@example.com'
 
 # users should NOT modify below!
 log = os.path.join(os.getcwd(), '..', 'logs', '')
